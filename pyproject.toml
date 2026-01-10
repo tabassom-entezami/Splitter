@@ -1,0 +1,13 @@
+[project]
+name = "splitter"
+version = "2026.0.0"
+dependencies = [
+  "FastAPI[standard]",
+
+]
+requires-python = ">=3.13"
+authors = [
+  {name = "Tabassom Entezami", email = "tabassom.entezami@gmail.com"},
+]
+
+description = "Lovely Fun Splitter!"
