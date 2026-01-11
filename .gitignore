@@ -22,11 +22,13 @@ wheels/
 MANIFEST
 
 # Virtual Environment
-venv/
-env/
-ENV/
 .env
+.env.*
+!.env.example
 .venv
+env/
+venv/
+ENV/
 env3.*
 
 # IDE
