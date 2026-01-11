@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   web:
-    container_name: splitter
     build: .
     ports:
       - "8000:80"
@@ -29,7 +28,6 @@ services:
 
   db:
     image: postgres:15-alpine
-    container_name: splitter-db
     env_file:
       - .env
     environment:
