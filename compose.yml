@@ -4,9 +4,9 @@ services:
   web:
     build: .
     ports:
-      - "8000:80"
+      - "127.0.0.1:8000:80"
     volumes:
-      - ./app:/code/app
+      - ./src:/code/src
     env_file:
       - .env
     environment:
@@ -14,16 +14,7 @@ services:
       - PYTHONDONTWRITEBYTECODE=1
     depends_on:
       - db
-    command: >
-      bash -c "
-      echo 'Waiting for PostgreSQL to start...' &&
-      until PGPASSWORD=$$POSTGRES_PASSWORD psql -h db -U $$POSTGRES_USER -d $$POSTGRES_DB -c 'SELECT 1' > /dev/null 2>&1; do
-        echo 'Waiting for PostgreSQL...';
-        sleep 2;
-      done &&
-      echo 'PostgreSQL is ready!' &&
-      uvicorn app.main:app --host 0.0.0.0 --port 80 --reload
-      "
+    command: fastapi run src/app/main.py --host 0.0.0.0 --port 80 --reload
     restart: unless-stopped
 
   db:

@@ -18,9 +18,9 @@ COPY pyproject.toml README.md ./
 RUN pip install --no-cache-dir -e .
 
 
-COPY ./app /code/app
+COPY ./src /code/src
 
 EXPOSE 80
 
 # Command to run the application
-CMD ["fastapi", "run", "app/main.py", "--host", "0.0.0.0", "--port", "80"]
+CMD ["fastapi", "run", "src/app/main.py", "--host", "0.0.0.0", "--port", "80"]
