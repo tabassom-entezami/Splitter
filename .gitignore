@@ -28,6 +28,7 @@ MANIFEST
 .venv
 env/
 venv/
+venv_splitter/
 ENV/
 env3.*
 

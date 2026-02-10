@@ -3,8 +3,16 @@ name = "splitter"
 version = "2026.0.0"
 dependencies = [
   "FastAPI[standard]",
-
+  "sqlalchemy",
+  "psycopg2-binary",
+  "pydantic",
+  "pydantic-settings",
+  "alembic",
+  "pytest",
+  "pytest-asyncio",
+  "httpx",
 ]
+
 requires-python = ">=3.13"
 authors = [
   {name = "Tabassom Entezami", email = "tabassom.entezami@gmail.com"},
