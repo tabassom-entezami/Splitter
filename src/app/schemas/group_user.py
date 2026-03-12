@@ -1,8 +1,8 @@
 from pydantic import BaseModel
+from datetime import datetime
 
 
 class GroupUserBase(BaseModel):
-    # Add fields as needed
     pass
 
 

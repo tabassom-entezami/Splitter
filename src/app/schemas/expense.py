@@ -1,6 +1,8 @@
 from pydantic import BaseModel
 from datetime import datetime
-
+from decimal import Decimal
+from typing import List, Optional
+from .group_user_expense import GroupUserExpenseResponse
 
 
 class ExpenseBase(BaseModel):
@@ -18,6 +20,7 @@ class ExpenseResponse(ExpenseBase):
     created_by_id: int
     created_at: datetime
     updated_at: datetime
+    group_user_expenses: List[GroupUserExpenseResponse] = []
     
     class Config:
         from_attributes = True

@@ -1,9 +1,9 @@
 from pydantic import BaseModel
+from decimal import Decimal
 
 
 class GroupUserExpenseBase(BaseModel):
-    # Add fields as needed
-    pass
+    amount: Decimal
 
 
 class GroupUserExpenseCreate(GroupUserExpenseBase):
