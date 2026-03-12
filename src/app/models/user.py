@@ -22,4 +22,3 @@ class User(Base):
     group_users = relationship("GroupUser", back_populates="user")
     expenses = relationship("Expense", back_populates="created_by")
     group_user_expenses = relationship("GroupUserExpense", back_populates="user")
-    balances = relationship("Balance", back_populates="user")
