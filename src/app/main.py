@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from .core.database import get_db, engine
 from .core.config import settings
 from .models import Base
+from .routers import users, groups, expenses
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -15,6 +16,9 @@ app = FastAPI(
     version="1.0.0"
 )
 
+app.include_router(users.router)
+app.include_router(groups.router)
+app.include_router(expenses.router)
 
 @app.get("/")
 async def root():
@@ -31,10 +35,6 @@ async def health_check(db: Session = Depends(get_db)):
         return {"status": "unhealthy", "database": "disconnected", "error": str(e)}
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
-
 
 @app.get("/config")
 async def get_config():
@@ -42,11 +42,3 @@ async def get_config():
         "database_url": settings.database_url,
         "environment": "development"
     }
-
-
-fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
-
-
-@app.get("/items/")
-async def read_item(skip: int = 0, limit: int = 10):
-    return fake_items_db[skip : skip + limit]
